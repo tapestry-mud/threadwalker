@@ -18,7 +18,7 @@ engine:
   # so deploys stop dropping the LLM key and the admin seed password stays out of the repo.
   env_file: /home/deploy/.threadwalker-secrets.env
 dependencies:
-  '@tapestry-mud/threadwalker': '0.1.0'
+  '@tapestry-mud/threadwalker': '0.1.1'
   '@tapestry/core': '0.1.26'
   '@tapestry/oracle': '0.7.0'
 validation: strict
