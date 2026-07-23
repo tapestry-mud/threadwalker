@@ -1,10 +1,10 @@
 name: threadwalker
-# Engine version pin (Task 16 Step 1) - the real, current, TAGGED version.
-# world.resetArea (Task 1) landed AFTER this tag was cut and is NOT included
-# here yet (see the matching comment in pack.yaml for the full trace). Ship
-# must bump this to a new engine tag cut off current master before deploying
-# threadwalker's week one content, which relies on resetArea for grind-death
-# repop and the ward-gate hook.
+# Engine version pin (Task 16 Step 1, updated Task 17) - the real, current, TAGGED version.
+# world.resetArea (Task 1) AND the cutscene-player API (Task 17, tapestry.cutscene.*) both
+# landed AFTER this tag was cut and are NOT included here yet (see the matching comment in
+# pack.yaml for the full trace). Ship must bump this to a new engine tag cut off current
+# master before deploying threadwalker's week one content + the Weaver opener, which rely on
+# resetArea (grind-death repop, the ward-gate hook) and the cutscene player respectively.
 engine:
   version: "0.1.52"
   channel: stable
