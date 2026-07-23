@@ -1,4 +1,7 @@
 name: Publish & Deploy
+# (re-saved to force GitHub Actions to register this workflow -- it never
+# appeared in the Actions workflow list after the repo's first push, unlike
+# the other three workflow files pushed in the same commit.)
 
 on:
   push:
