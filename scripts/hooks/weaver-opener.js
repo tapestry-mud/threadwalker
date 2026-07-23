@@ -25,6 +25,19 @@ import * as tapestry from "@tapestry/engine";
 
 var HUB_ENTRY_ROOM_ID = "tapestry-mud-threadwalker:hub-entry";
 var OPENER_SEEN_PROPERTY = "weaver_opener_seen";
+var RECALL_ROOM_PROPERTY = "recall_room_id";
+
+// The hub is this world's recall point. `recall_room_id` is registered by
+// @tapestry/core (properties.yml) and honoured by both core's recall verb and
+// its death handler; when it is unset both fall back to tapestry-core:recall,
+// which in this world is a two-room pocket with no exit back to the hub. Set it
+// on every connect (not just in the opener's onComplete) so a character that
+// reaches the world by any other path - an admin seed, a future login route -
+// still has a working way home. Idempotent: same value written every time.
+function ensureRecallRoom(entityId) {
+    if (!entityId) { return; }
+    tapestry.world.setProperty(entityId, RECALL_ROOM_PROPERTY, HUB_ENTRY_ROOM_ID);
+}
 
 var WEAVER_OPENER_BEATS = [
     { text: "The Weaver stands at the Tapestry, working the threads like a loom no one else can see.", pauseAfter: 35 },
@@ -92,6 +105,7 @@ function maybeStartOpener(entityId) {
 // connect" hook for a brand-new player.
 tapestry.events.on("character.created", function (evt) {
     try {
+        ensureRecallRoom(evt && evt.sourceEntityId);
         maybeStartOpener(evt && evt.sourceEntityId);
     } catch (err) {
         // graceful: never throw into the engine loop.
@@ -103,6 +117,7 @@ tapestry.events.on("character.created", function (evt) {
 // above, where character.created already fired once but never got to completion.
 tapestry.events.on("player.login", function (evt) {
     try {
+        ensureRecallRoom(evt && evt.sourceEntityId);
         maybeStartOpener(evt && evt.sourceEntityId);
     } catch (err) {
         // graceful: never throw into the engine loop.
