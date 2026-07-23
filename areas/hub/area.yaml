@@ -1,0 +1,6 @@
+area:
+  id: hub
+  name: "The Hub"
+  level_range: [1, 1]
+  reset_interval: 0
+  flags: [safe]

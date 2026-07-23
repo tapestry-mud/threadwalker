@@ -1,0 +1,15 @@
+id: "tapestry-mud-threadwalker:hub-tapestry-hall"
+area: hub
+name: "The Tapestry Hall"
+description: "The Tapestry fills the far wall, threads of light shifting and re-weaving themselves without a sound. The air hums faintly, like a held breath. The Waystone Hall lies south."
+tags: [safe]
+exits:
+  south: "tapestry-mud-threadwalker:hub-entry"
+properties:
+  terrain: indoors
+spawns:
+  - mob: "tapestry-mud-threadwalker:hub-keeper"
+    count: 1
+    tags: [persistent]
+fixtures:
+  - "tapestry-mud-threadwalker:tapestry-board"

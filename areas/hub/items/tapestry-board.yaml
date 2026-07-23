@@ -1,0 +1,9 @@
+id: "tapestry-mud-threadwalker:tapestry-board"
+name: "the Tapestry"
+type: item
+tags: [readable, fixture]
+keywords: [tapestry, board, threads, loom]
+properties:
+  text: "The Tapestry hangs floor to ceiling, threads shifting.\r\nType TAPESTRY to read the open threads.\r\nType TAPESTRY START <id> <level> to pull one.\r\n"
+  weight: 0
+  value: 0

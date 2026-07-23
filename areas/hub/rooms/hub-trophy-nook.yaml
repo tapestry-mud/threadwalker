@@ -1,0 +1,9 @@
+id: "tapestry-mud-threadwalker:hub-trophy-nook"
+area: hub
+name: "The Trophy Nook"
+description: "A small stone alcove lined with empty shelves, waiting for whatever you carry back out of the weave. Dust has not found this place yet. The Waystone Hall is west."
+tags: [safe]
+exits:
+  west: "tapestry-mud-threadwalker:hub-entry"
+properties:
+  terrain: indoors

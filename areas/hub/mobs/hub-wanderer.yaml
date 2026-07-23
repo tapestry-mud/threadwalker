@@ -1,0 +1,25 @@
+id: "tapestry-mud-threadwalker:hub-wanderer"
+name: "a fellow wanderer"
+type: npc
+tags: [no_kill]
+base_disposition: friendly
+behavior: stationary
+keywords: [wanderer, fellow, traveler]
+script: mobs/hub-wanderer.js
+idle_chance: 0.4
+idle_interval: 25
+idle_commands:
+  - 'say Word is the Weaver has been gone a long while now.'
+stats:
+  strength: 10
+  dexterity: 12
+  constitution: 10
+  intelligence: 10
+  wisdom: 10
+  luck: 10
+  max_hp: 50
+  max_resource: 0
+  max_movement: 30
+properties:
+  mob_level: 1
+  description: "A road-worn traveler leaning against the wall, resting between threads same as you."

@@ -1,0 +1,25 @@
+id: "tapestry-mud-threadwalker:hub-keeper"
+name: "the old keeper"
+type: npc
+tags: [no_kill]
+base_disposition: friendly
+behavior: stationary
+keywords: [keeper, old, man]
+script: mobs/hub-keeper.js
+idle_chance: 0.4
+idle_interval: 25
+idle_commands:
+  - 'emote traces a finger along a loose thread, careful not to pull it.'
+stats:
+  strength: 8
+  dexterity: 8
+  constitution: 10
+  intelligence: 12
+  wisdom: 16
+  luck: 10
+  max_hp: 60
+  max_resource: 0
+  max_movement: 20
+properties:
+  mob_level: 1
+  description: "A stooped old man in a plain grey robe, standing watch over the Tapestry like it might need him at any moment."
