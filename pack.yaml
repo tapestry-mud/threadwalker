@@ -1,5 +1,5 @@
 name: "@tapestry-mud/threadwalker"
-version: "0.1.0"
+version: "0.1.1"
 type: "world"
 display_name: "Threadwalker"
 description: "The Weaver's game -- a Tapestry-native world, empty and deployable, awaiting content."
