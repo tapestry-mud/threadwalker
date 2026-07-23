@@ -1,0 +1,12 @@
+id: "tapestry-mud-threadwalker:school-hall"
+area: school
+name: "The Lesson Hall"
+description: "The passage opens into a bare stone hall. Something waits at the far end, more shape than substance, patient and unmoving. North leads back the way you came."
+exits:
+  north: "tapestry-mud-threadwalker:school-corridor"
+properties:
+  terrain: indoors
+spawns:
+  - mob: "tapestry-mud-threadwalker:the-lesson"
+    count: 1
+    tags: [persistent]

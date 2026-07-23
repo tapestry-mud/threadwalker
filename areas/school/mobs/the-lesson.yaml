@@ -1,0 +1,60 @@
+id: "tapestry-mud-threadwalker:the-lesson"
+name: "the lesson"
+type: npc
+tags: []
+base_disposition: neutral
+behavior: stationary
+keywords: [lesson, wall, weave, shape]
+script: mobs/the-lesson.js
+stats:
+  strength: 20
+  dexterity: 14
+  constitution: 20
+  intelligence: 10
+  wisdom: 10
+  luck: 10
+  max_hp: 5000
+  max_resource: 0
+  max_movement: 40
+battle_chance: 0.8
+battle_interval: 3
+properties:
+  mob_level: 20
+  regen_hp: 5
+  regen_movement: 5
+  corpse_decay: 900
+  description: "A shape woven out of the loom itself, more outline than substance. It does not move, does not speak. It is simply more thread than you can pull."
+  ac:
+    slash: 6
+    pierce: 6
+    bash: 7
+    exotic: 3
+  xp_value: 0
+  gold_min: 0
+  gold_max: 0
+  swell_window: "telegraph-rung"
+  swell_tell: "full"
+  swell_baseline_gap_ticks: 60
+  swell_jitter_ticks: 20
+  swell_telegraph_ticks: 20
+  swell_window_ticks: 60
+  swell_mode: "stretch"
+  swell_line1_id: "thread-pull"
+  swell_line1_counter: "sidestep"
+  swell_line1_tell_full: "The lesson draws a thread taut across the room -- sidestep it!"
+  swell_line1_tell_shape: "The lesson draws a thread taut across the room."
+  swell_line2_id: "thread-snap"
+  swell_line2_counter: "brace"
+  swell_line2_tell_full: "The lesson gathers every thread at once for a single snap -- brace for it!"
+  swell_line2_tell_shape: "The lesson gathers every thread at once for a single snap."
+  swell_tell_hidden: "The lesson goes still, gathering something you cannot read."
+  swell_chunk_pct: 33
+  swell_whiff_pct: 15
+  swell_weather_pct: 8
+  swell_narration_countered: "You read the pull and turn it aside. The lesson holds its shape, unreadable."
+  swell_narration_whiffed: "Wrong read. The thread snaps home and something cold floods through you."
+  swell_narration_weathered: "You hesitate a beat too long, and the thread finds you."
+loot:
+  guaranteed: []
+  pool: []
+  pool_rolls: 0

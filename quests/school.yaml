@@ -1,0 +1,33 @@
+id: "tapestry-mud-threadwalker:school"
+name: "The First Thread"
+type: main
+script: "scripts/quests/school.js"
+secret: false
+repeatable: false
+abandonable: false
+
+stages:
+  - id: "walk-in"
+    description: "Walk the first thread to the lesson."
+    hint: "Follow the path south, deeper into the weave."
+    objectives:
+      - id: "reach-hall"
+        type: visit
+        target: "tapestry-mud-threadwalker:school-hall"
+        count: 1
+        description: "Reach the lesson"
+  - id: "the-lesson"
+    description: "Face the lesson. You are not meant to win it."
+    hint: "Attack the lesson."
+    objectives:
+      - id: "take-the-loss"
+        type: visit
+        target: "tapestry-mud-threadwalker:school-aftermath"
+        count: 1
+        description: "See what the loss leaves you"
+
+rewards:
+  xp: 25
+  gold: 15
+  items:
+    - "tapestry-mud-threadwalker:first-thread"

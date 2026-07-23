@@ -1,0 +1,5 @@
+properties:
+  quest_grant:
+    description: "Quest ID granted when player enters this room"
+    type: string
+    applies_to: [room]
