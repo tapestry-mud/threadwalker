@@ -5,6 +5,14 @@ engine:
   mode: docker
   image: ghcr.io/tapestry-mud/tapestry
   network: tapestry_default
+  # LF already holds the default 4000/4001 on the shared droplet; this instance
+  # stands up alongside it (not in place of it), so it needs its own host ports.
+  # Requires tapestry-cli >=0.14.0 (engine.host_ports; see its docker-host-ports
+  # change record). Container-internal ports are unchanged -- server.yaml keeps
+  # telnet_port: 4000 / websocket_port: 4001.
+  host_ports:
+    telnet: 4010
+    websocket: 4011
   # Host path on the droplet (deploy-readable); the file holds TAPESTRY_LLM_API_KEY
   # and TAPESTRY_ADMIN_PASSWORD. `tapestry start` injects it as `docker run --env-file`,
   # so deploys stop dropping the LLM key and the admin seed password stays out of the repo.
