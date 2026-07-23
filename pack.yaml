@@ -1,22 +1,30 @@
+# Version 0.2.1 (Task 17) is a small bump on top of Task 16's 0.2.0, not a second
+# release: 0.2.0 was never pushed/published (solo-master, local commits only), so
+# there is no live deploy for a back-to-back bump to supersede - the plan's "fold
+# into Task 16's bump instead of cutting a second release" guidance is about
+# avoiding a wasted PUBLISHED deploy, which does not apply here. Ship from this
+# tip (0.2.1) as the one release for the whole Hub and Threads v1 slice (Tasks
+# 1-17); 0.2.0 is an intermediate commit in the same local history, not a
+# separate shipped version.
 name: "@tapestry-mud/threadwalker"
-version: "0.2.0"
+version: "0.2.1"
 type: "world"
 display_name: "Threadwalker"
 description: "The Weaver's game -- a Tapestry-native world, empty and deployable, awaiting content."
 author: "Travis Haley"
 license: "MIT"
 
-# Engine floor (Task 16 Step 1). This plan's Task 1 (world.resetArea - used by
-# the grind-death repop path, Task 12, and week one's ward-tag hook) is NOT
-# YET in any TAGGED engine release: it landed on engine master AFTER the
-# v0.1.52 tag was cut (verified 2026-07-23 - `git describe --tags HEAD` in
-# D:\Skunkworks\tapestry = v0.1.52-4-g1a965df; the resetArea commit e7ed747
-# sits 2 commits past the v0.1.52 tag). authoring.deleteArea (per-run
-# teardown, Task 13) IS already in the v0.1.51 tag, so 0.1.52 covers that
-# half fine. The floor below is therefore the real, current, TAGGED floor -
-# it is deliberately NOT bumped to a guessed next number. Ship must cut a new
-# engine release off current master (which does include resetArea) and raise
-# this floor to that version before deploying threadwalker.
+# Engine floor (Task 16 Step 1, updated Task 17). Two pieces of this plan's engine work are
+# NOT YET in any TAGGED engine release: Task 1's world.resetArea (grind-death repop, the
+# ward-tag hook) and Task 17's cutscene-player API (the Weaver opener's tapestry.cutscene.*,
+# scripts/hooks/weaver-opener.js). Both landed on engine master AFTER the v0.1.52 tag was cut
+# (verified 2026-07-23 - `git describe --tags HEAD` in D:\Skunkworks\tapestry =
+# v0.1.52-5-g52fcd99; commit 52fcd99 is the cutscene-player, e7ed747 is resetArea, both past
+# the v0.1.52 tag). authoring.deleteArea (per-run teardown, Task 13) IS already in the
+# v0.1.51 tag, so 0.1.52 covers that half fine. The floor below is therefore the real,
+# current, TAGGED floor - it is deliberately NOT bumped to a guessed next number. Ship must
+# cut a new engine release off current master (which includes both resetArea and the
+# cutscene-player API) and raise this floor to that version before deploying threadwalker.
 engine: ">=0.1.52"
 
 # @tapestry/core and @tapestry/oracle floors (Task 16 Step 1). Pinned to
