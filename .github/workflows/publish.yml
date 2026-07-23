@@ -1,0 +1,100 @@
+name: Publish & Deploy
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'pack.yaml'
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write   # required for OIDC trusted publishing
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+      name: ${{ steps.meta.outputs.name }}
+      published: ${{ steps.check.outputs.published }}
+
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: '22'
+
+      - run: npm install -g @tapestry-mud/cli@0.13.0
+
+      - name: Read pack metadata
+        id: meta
+        run: |
+          VERSION=$(grep '^version:' pack.yaml | sed 's/version: *"\{0,1\}\([^"]*\)"\{0,1\}/\1/')
+          NAME=$(grep '^name:' pack.yaml | sed 's/name: *"\{0,1\}\([^"]*\)"\{0,1\}/\1/')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Check if version changed
+        id: check
+        run: |
+          OLD_VERSION=$(git show HEAD~1:pack.yaml 2>/dev/null | grep '^version:' | sed 's/version: *"\{0,1\}\([^"]*\)"\{0,1\}/\1/' || echo "")
+          if [ "$OLD_VERSION" = "${{ steps.meta.outputs.version }}" ]; then
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            echo "Version unchanged ($OLD_VERSION), skipping publish."
+          else
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "Version bumped: $OLD_VERSION -> ${{ steps.meta.outputs.version }}"
+          fi
+
+      - run: npm ci
+
+      - run: npm test
+        if: steps.check.outputs.published == 'true'
+
+      - run: tapestry validate
+        if: steps.check.outputs.published == 'true'
+
+      - name: Publish to registry
+        if: steps.check.outputs.published == 'true'
+        env:
+          TAPESTRY_REGISTRY: https://registry.tapestryengine.com
+        run: tapestry publish
+        # OIDC trusted publishing: tapestry publish detects the Actions OIDC env, exchanges an
+        # id-token at POST /v1/token, and tags 'stable' in the same call (tag-on-publish).
+
+  deploy:
+    needs: publish
+    if: needs.publish.outputs.published == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+
+      - name: Copy tapestry.yaml to droplet
+        uses: appleboy/scp-action@ff85246acaad7bdce478db94a363cd2bf7c90345 # v1.0.0
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: deploy
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          source: tapestry.yaml
+          target: /opt/tapestry/threadwalker
+
+      - name: Deploy to droplet
+        uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: deploy
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            cd /opt/tapestry/threadwalker
+            tapestry stop
+            tapestry update
+            tapestry start
+            echo "Deployed ${{ needs.publish.outputs.name }}@${{ needs.publish.outputs.version }}"
+        # @tapestry-mud/threadwalker is a public pack, so the droplet's `tapestry update`
+        # pulls it without authentication -- no login/token needed off the Actions runner.

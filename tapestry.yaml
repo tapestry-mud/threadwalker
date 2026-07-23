@@ -1,0 +1,16 @@
+name: threadwalker
+engine:
+  version: "0.1.52"
+  channel: stable
+  mode: docker
+  image: ghcr.io/tapestry-mud/tapestry
+  network: tapestry_default
+  # Host path on the droplet (deploy-readable); the file holds TAPESTRY_LLM_API_KEY
+  # and TAPESTRY_ADMIN_PASSWORD. `tapestry start` injects it as `docker run --env-file`,
+  # so deploys stop dropping the LLM key and the admin seed password stays out of the repo.
+  env_file: /home/deploy/.threadwalker-secrets.env
+dependencies:
+  '@tapestry-mud/threadwalker': '0.1.0'
+  '@tapestry/core': '0.1.26'
+  '@tapestry/oracle': '0.7.0'
+validation: strict

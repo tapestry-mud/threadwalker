@@ -1,0 +1,45 @@
+name: Project Sync
+
+# Deploys game-project manifest (tapestry.yaml) changes to the droplet.
+# Sibling of config-sync.yml (which handles server.yaml) -- but this one runs
+# `tapestry update` so newly-declared dependencies are installed. Pack content
+# changes still go through publish.yml (pack.yaml bump); this is for project
+# dependency / engine-channel changes that don't bump the pack.
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - 'tapestry.yaml'
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+
+      - name: Copy project manifest to droplet
+        uses: appleboy/scp-action@ff85246acaad7bdce478db94a363cd2bf7c90345 # v1.0.0
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: deploy
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          source: "tapestry.yaml"
+          target: /opt/tapestry/threadwalker
+          overwrite: true
+
+      - name: Update packs and restart
+        uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: deploy
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            cd /opt/tapestry/threadwalker
+            tapestry stop
+            tapestry update
+            tapestry start
+            echo "Project manifest synced; packs updated and server restarted"

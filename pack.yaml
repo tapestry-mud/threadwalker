@@ -1,0 +1,26 @@
+name: "@tapestry-mud/threadwalker"
+version: "0.1.0"
+type: "world"
+display_name: "Threadwalker"
+description: "The Weaver's game -- a Tapestry-native world, empty and deployable, awaiting content."
+author: "Travis Haley"
+license: "MIT"
+
+engine: ">=0.1.52"
+
+dependencies:
+  "@tapestry/core": "0.1.26"
+  "@tapestry/oracle": "0.7.0"
+
+validation: strict
+
+tags: "tags.yml"
+
+content:
+  area_definitions: "areas/**/area.yaml"
+  rooms: "areas/**/rooms/*.yaml"
+  items: "areas/**/items/*.yaml"
+  mobs: "areas/**/mobs/*.yaml"
+  scripts: "scripts/**/*.js"
+  quests: "quests/*.yaml"
+  help: "help/**/*.yaml"

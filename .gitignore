@@ -1,0 +1,9 @@
+node_modules/
+*.log
+.env
+data/
+packs/
+.tapestry-engine/
+tapestry-links.yaml
+dist/
+**/dist/

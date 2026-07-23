@@ -1,0 +1,14 @@
+{
+  "name": "@tapestry-mud/threadwalker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest --passWithNoTests",
+    "spec-lint": "spec-lint specs/"
+  },
+  "devDependencies": {
+    "@tapestry-mud/spec-lint": "0.2.2",
+    "jest": "30.4.2"
+  }
+}
