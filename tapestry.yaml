@@ -30,7 +30,7 @@ engine:
 # oracle/core actually ship this plan's features under new version numbers;
 # see the matching comment in pack.yaml for the full trace.
 dependencies:
-  '@tapestry-mud/threadwalker': '0.2.0'
+  '@tapestry-mud/threadwalker': '0.2.1'
   '@tapestry/core': '0.1.26'
   '@tapestry/oracle': '0.7.0'
 validation: strict
