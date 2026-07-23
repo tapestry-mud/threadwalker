@@ -3,3 +3,15 @@ properties:
     description: "Quest ID granted when player enters this room"
     type: string
     applies_to: [room]
+  weaver_opener_seen:
+    description: >-
+      True once the Weaver first-login opener cutscene has fully completed
+      (naturally or via skip) for this player. Registered so player-save
+      hygiene does not drop it -- an unset/false value means the opener
+      still needs to play on the player's next connect (character.created
+      or player.login), which also covers a disconnect mid-cutscene: the
+      flag is set in onComplete, never at cutscene start, so an interrupted
+      opener replays from the top on the very next login instead of
+      stranding the player with no path into the game.
+    type: bool
+    applies_to: [player]
