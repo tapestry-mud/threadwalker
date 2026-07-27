@@ -107,6 +107,15 @@ function wardBossIfPresent(roomId) {
         if (tapestry.world.hasTag(mobId, "req_ward_dispel")) { continue; }
         tapestry.world.addTag(mobId, "req_ward_dispel");
         tapestry.world.setProperty(mobId, "description", WARD_BOSS_DESC);
+        var name = npcs[i].name && npcs[i].name.trim() !== "" ? npcs[i].name : "something here";
+        tapestry.world.setProperty(mobId, "swell_line1_tell_full", name + " winds up a heavy STRIKE - sidestep it!\r\n");
+        tapestry.world.setProperty(mobId, "swell_line1_tell_shape", name + " winds up for something heavy.\r\n");
+        tapestry.world.setProperty(mobId, "swell_line2_tell_full", name + " rears back for a crushing SLAM - brace for it!\r\n");
+        tapestry.world.setProperty(mobId, "swell_line2_tell_shape", name + " rears back for something crushing.\r\n");
+        tapestry.world.setProperty(mobId, "swell_tell_hidden", name + " gathers some dark energy.\r\n");
+        tapestry.world.setProperty(mobId, "swell_narration_countered", "Clean read. Your counter lands and " + name + " staggers.");
+        tapestry.world.setProperty(mobId, "swell_narration_whiffed", "Wrong move. The blow crashes through your guard.");
+        tapestry.world.setProperty(mobId, "swell_narration_weathered", "Too slow. The blow lands full force.");
         tapestry.world.sendToRoom(roomId, telegraphLineFor(npcs[i].name));
     }
 }

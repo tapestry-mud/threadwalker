@@ -1,6 +1,6 @@
 ---
 capability: threadwalker-world
-last-updated: 2026-07-25
+last-updated: 2026-07-27
 ---
 
 # Threadwalker World
@@ -48,6 +48,11 @@ YAML; the behavior below is what the scripts do.
   tags the run's wandering boss with `req_ward_dispel`, both idempotent and re-applied after a
   grind-death repop. (scripts/oracle/week-one-ward.js:114; scripts/oracle/week-one-ward.js:85;
   scripts/oracle/week-one-ward.js:108)
+- The same tagging pass substitutes the boss's live `.name` into its swell tell-lines
+  (`swell_line1/2_tell_full/shape`, `swell_tell_hidden`) and narration
+  (`swell_narration_countered/whiffed/weathered`), overwriting the archetype's hardcoded "the
+  guardian" placeholder text so the QTE reads as the actual mob the room-listing and telegraph
+  line already name it as, not a mismatched generic label. (scripts/oracle/week-one-ward.js:94-118)
 
 ## Rejected and Reverted
 
@@ -55,4 +60,5 @@ YAML; the behavior below is what the scripts do.
 
 ## Change Log
 
+- 2026-07-27 [swell-name-substitution](changes/2026-07-27-swell-name-substitution.md) - the week-one ward hook substitutes the boss's live name into its swell tell-lines and narration instead of a hardcoded "the guardian" placeholder
 - 2026-07-25 [hub-threads-v1](changes/2026-07-25-hub-threads-v1.md) - the v1 world: hub, the school (designed loss + unlock), week one (The Fraying Vault) + the ward gate, and the Weaver first-login opener with hub recall wiring
