@@ -38,6 +38,16 @@ skipped with the cutscene's own `skip` input before setup begins.
 ## Setup
 - Players: Gamemaster
 
+## Login
+### Gamemaster
+1. Wait for: `Speak your name`
+2. Send: `Gamemaster`
+3. Wait for: `Password`
+4. Send: `testpass123`
+5. Wait for: `Welcome`
+6. Wait for: `The Weaver stands at the Tapestry`
+7. Send: `skip`
+
 ## Steps
 1. Gamemaster: `skip`
 2. Gamemaster: `teleport Gamemaster tapestry-test-fixtures:test-arena`
