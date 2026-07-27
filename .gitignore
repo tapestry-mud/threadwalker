@@ -7,3 +7,5 @@ packs/
 tapestry-links.yaml
 dist/
 **/dist/
+
+.worktrees/
