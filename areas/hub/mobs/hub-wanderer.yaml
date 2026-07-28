@@ -7,9 +7,11 @@ behavior: stationary
 keywords: [wanderer, fellow, traveler]
 script: mobs/hub-wanderer.js
 idle_chance: 0.4
-idle_interval: 25
+idle_interval: 40
 idle_commands:
   - 'say Word is the Weaver has been gone a long while now.'
+  - 'say I keep meaning to pull a thread. Keep putting it off.'
+  - 'emote shifts against the wall, resting between threads.'
 stats:
   strength: 10
   dexterity: 12

@@ -7,9 +7,11 @@ behavior: stationary
 keywords: [keeper, old, man]
 script: mobs/hub-keeper.js
 idle_chance: 0.4
-idle_interval: 25
+idle_interval: 40
 idle_commands:
   - 'emote traces a finger along a loose thread, careful not to pull it.'
+  - 'emote studies the Tapestry without touching it.'
+  - 'say The threads always find their way back to the loom, one way or another.'
 stats:
   strength: 8
   dexterity: 8
