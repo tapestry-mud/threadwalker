@@ -1,6 +1,6 @@
 ---
 capability: threadwalker-world
-last-updated: 2026-07-27
+last-updated: 2026-07-28
 ---
 
 # Threadwalker World
@@ -37,6 +37,14 @@ YAML; the behavior below is what the scripts do.
   engage, and calls `removeFromAllCombat` + `restoreVitals` before any damage resolves, so
   `entity.vital.depleted` never publishes and the core death path is never invoked - a guaranteed
   loss that pays out rather than killing. (scripts/mobs/the-lesson.js:18)
+- The mob's reaction, loss narration, and aftermath-room transition are deferred by one engine
+  tick (`tapestry.schedule.every(1, ...)`, mirroring the Weaver opener's own one-tick defer),
+  while `removeFromAllCombat`/`restoreVitals` stay synchronous. `onAttack` runs inside
+  `combat.engage()` itself, and the shared attack handler
+  (`@tapestry/core` `scripts/combat/commands.ts`) only sends the attacker's own "You attack the
+  lesson!" confirmation after `engage()` returns - without the defer, the loss narration and room
+  transition printed before the player's own attack line ever did. (scripts/mobs/the-lesson.js:36;
+  scripts/hooks/weaver-opener.js:93)
 - Completing the school quest sets `tapestry_unlocked`, the one v1 trophy that opens the Tapestry
   board. (scripts/quests/school.js:16)
 
