@@ -1,5 +1,5 @@
 ---
-release: 0.2.2
+release: unreleased
 specs: [threadwalker-world.md]
 ---
 
