@@ -1,9 +1,10 @@
 name: threadwalker
-# Engine version pin - 0.1.53 carries world.resetArea (grind-death repop, the
-# ward-gate hook) and the cutscene-player API (the Weaver opener). Cut and promoted
-# to stable at ship; docker mode pulls this exact tag.
+# Engine version pin - 0.1.55 carries writeItemTemplate's modifiers pass-through
+# (gear-carries-HP) and AttemptFlee's no_wander respect (closes S2-13), plus a
+# CI scenario-isolation fix. Cut and promoted to stable at ship; docker mode
+# pulls this exact tag.
 engine:
-  version: "0.1.53"
+  version: "0.1.55"
   channel: stable
   mode: docker
   image: ghcr.io/tapestry-mud/tapestry
@@ -20,11 +21,11 @@ engine:
   # and TAPESTRY_ADMIN_PASSWORD. `tapestry start` injects it as `docker run --env-file`,
   # so deploys stop dropping the LLM key and the admin seed password stays out of the repo.
   env_file: /home/deploy/.threadwalker-secrets.env
-# Pack floors - the versions that ship this plan's work (core 0.1.27, oracle
-# 0.8.0), both published stable at ship. The self-pin tracks pack.yaml's own
-# version (0.2.2) and MUST stay in sync with it (two fields, same package).
+# Pack floors - the versions that ship this patch lane's work (core 0.1.28,
+# oracle 0.9.0), both published stable at ship. The self-pin tracks pack.yaml's
+# own version (0.3.0) and MUST stay in sync with it (two fields, same package).
 dependencies:
-  '@tapestry-mud/threadwalker': '0.2.2'
-  '@tapestry/core': '0.1.27'
-  '@tapestry/oracle': '0.8.0'
+  '@tapestry-mud/threadwalker': '0.3.0'
+  '@tapestry/core': '0.1.28'
+  '@tapestry/oracle': '0.9.0'
 validation: strict

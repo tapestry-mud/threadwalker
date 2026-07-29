@@ -1,28 +1,31 @@
-# 0.2.2 is the Hub and Threads v1 release (Tasks 1-17 plus the two ship-validate
-# fixes: recall honors recall_room_id, startRun refuses a nested run). The dark
-# 0.2.0/0.2.1 commits were never published (registry had only the 0.1.1 scaffold),
-# so this is the first real content release. The version bump must be the tip
-# commit (publish.yml compares HEAD~1 vs HEAD pack.yaml) or publish + deploy skip.
+# 0.2.2 was the Hub and Threads v1 release (Tasks 1-17 plus the two ship-validate
+# fixes: recall honors recall_room_id, startRun refuses a nested run). 0.3.0 is
+# the threadwalker patch lane: gear-carries-HP end to end, the level dial
+# defaults/explains/warns, the boss room is tagged no_wander on spawn (closes
+# S2-13), the Lane 2/3 UX sweep, and the lesson death-sequence ordering fix.
+# The version bump must be the tip commit (publish.yml compares HEAD~1 vs HEAD
+# pack.yaml) or publish + deploy skip.
 name: "@tapestry-mud/threadwalker"
-version: "0.2.2"
+version: "0.3.0"
 type: "world"
 display_name: "Threadwalker"
 description: "The Weaver's game -- a Tapestry-native world, empty and deployable, awaiting content."
 author: "Travis Haley"
 license: "MIT"
 
-# Engine floor. >=0.1.53 is the release that carries both world.resetArea
-# (grind-death repop, the ward-tag hook) and the cutscene-player API (the Weaver
-# opener's tapestry.cutscene.*), both cut into the v0.1.53 tag at ship.
-engine: ">=0.1.53"
+# Engine floor. >=0.1.55 is the release that carries writeItemTemplate's
+# modifiers pass-through (gear-carries-HP) and AttemptFlee's no_wander
+# respect (closes S2-13), both cut at ship of this patch lane.
+engine: ">=0.1.55"
 
-# @tapestry/core and @tapestry/oracle floors - the versions that ship this plan's
-# work: core 0.1.27 (dispel + ward gate, tier-scaled death, pure-gear HP, gear
-# legibility) and oracle 0.8.0 (template/run split, the board, the mint bench,
-# level-locked loot, per-run teardown), both published stable at ship.
+# @tapestry/core and @tapestry/oracle floors - the versions that ship this
+# patch lane's work: core 0.1.28 (dispel/dispell/disp aliases, countered-swell
+# damage visibility) and oracle 0.9.0 (gear-carries-HP, level dial default/
+# explain/warning, boss-room no_wander tagging, short board handles, bare
+# hint, cleared-thread exit hint), both published stable at ship.
 dependencies:
-  "@tapestry/core": "0.1.27"
-  "@tapestry/oracle": "0.8.0"
+  "@tapestry/core": "0.1.28"
+  "@tapestry/oracle": "0.9.0"
 
 validation: strict
 
