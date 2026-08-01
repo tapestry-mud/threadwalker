@@ -3,10 +3,13 @@
 # the threadwalker patch lane: gear-carries-HP end to end, the level dial
 # defaults/explains/warns, the boss room is tagged no_wander on spawn (closes
 # S2-13), the Lane 2/3 UX sweep, and the lesson death-sequence ordering fix.
+# 0.3.1 is a same-day hotfix: oracle 0.9.0 shipped armor.ac with an inverted
+# sign, making every minted/starter-kit armor piece lower the wearer's AC
+# instead of raising it - caught live during Travis's own first playtest.
 # The version bump must be the tip commit (publish.yml compares HEAD~1 vs HEAD
 # pack.yaml) or publish + deploy skip.
 name: "@tapestry-mud/threadwalker"
-version: "0.3.0"
+version: "0.3.1"
 type: "world"
 display_name: "Threadwalker"
 description: "The Weaver's game -- a Tapestry-native world, empty and deployable, awaiting content."
@@ -20,12 +23,12 @@ engine: ">=0.1.55"
 
 # @tapestry/core and @tapestry/oracle floors - the versions that ship this
 # patch lane's work: core 0.1.28 (dispel/dispell/disp aliases, countered-swell
-# damage visibility) and oracle 0.9.0 (gear-carries-HP, level dial default/
+# damage visibility) and oracle 0.9.1 (gear-carries-HP, level dial default/
 # explain/warning, boss-room no_wander tagging, short board handles, bare
-# hint, cleared-thread exit hint), both published stable at ship.
+# hint, cleared-thread exit hint, and the 0.9.1 armor.ac sign hotfix).
 dependencies:
   "@tapestry/core": "0.1.28"
-  "@tapestry/oracle": "0.9.0"
+  "@tapestry/oracle": "0.9.1"
 
 validation: strict
 
