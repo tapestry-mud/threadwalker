@@ -28,8 +28,13 @@ engine:
 # oracle 0.9.1, the latter including the same-day armor.ac sign hotfix). The
 # self-pin tracks pack.yaml's own version (0.3.1) and MUST stay in sync with
 # it (two fields, same package).
+# EXACT versions the droplet installs. This is NOT the same list as pack.yaml's
+# `dependencies:`, which carries compatibility FLOORS for the published pack.
+# Only this block drives `tapestry update` on the server, so bumping pack.yaml
+# alone publishes a new pack that the droplet then declines to install - it
+# reports "up to date" against these pins and exits 0.
 dependencies:
-  '@tapestry-mud/threadwalker': '0.3.1'
+  '@tapestry-mud/threadwalker': '0.3.3'
   '@tapestry/core': '0.1.28'
-  '@tapestry/oracle': '0.9.1'
+  '@tapestry/oracle': '0.9.2'
 validation: strict
