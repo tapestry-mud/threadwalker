@@ -1,10 +1,13 @@
 name: threadwalker
-# Engine version pin - 0.1.55 carries writeItemTemplate's modifiers pass-through
-# (gear-carries-HP) and AttemptFlee's no_wander respect (closes S2-13), plus a
-# CI scenario-isolation fix. Cut and promoted to stable at ship; docker mode
-# pulls this exact tag.
+# Engine version pin - 0.1.56 raises the rest/sleep recovery multipliers to
+# 4x/6x. Recovery downtime is dead time: at 2x/3x a level-1 player needed about
+# twice as long asleep as the boss engagement that emptied them had lasted, and
+# the gap between resting and sleeping was itself the difference between a
+# winnable boss fight and a stalled one. 0.1.55 carried writeItemTemplate's
+# modifiers pass-through (gear-carries-HP) and AttemptFlee's no_wander respect
+# (closes S2-13). Docker mode pulls this exact tag.
 engine:
-  version: "0.1.55"
+  version: "0.1.56"
   channel: stable
   mode: docker
   image: ghcr.io/tapestry-mud/tapestry

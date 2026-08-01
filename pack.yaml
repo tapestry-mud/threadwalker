@@ -9,7 +9,7 @@
 # The version bump must be the tip commit (publish.yml compares HEAD~1 vs HEAD
 # pack.yaml) or publish + deploy skip.
 name: "@tapestry-mud/threadwalker"
-version: "0.3.1"
+version: "0.3.2"
 type: "world"
 display_name: "Threadwalker"
 description: "The Weaver's game -- a Tapestry-native world, empty and deployable, awaiting content."
@@ -18,17 +18,22 @@ license: "MIT"
 
 # Engine floor. >=0.1.55 is the release that carries writeItemTemplate's
 # modifiers pass-through (gear-carries-HP) and AttemptFlee's no_wander
-# respect (closes S2-13), both cut at ship of this patch lane.
-engine: ">=0.1.55"
+# respect (closes S2-13), both cut at ship of this patch lane. 0.1.56 raises
+# the rest/sleep recovery multipliers to 4x/6x.
+engine: ">=0.1.56"
 
 # @tapestry/core and @tapestry/oracle floors - the versions that ship this
 # patch lane's work: core 0.1.28 (dispel/dispell/disp aliases, countered-swell
 # damage visibility) and oracle 0.9.1 (gear-carries-HP, level dial default/
 # explain/warning, boss-room no_wander tagging, short board handles, bare
-# hint, cleared-thread exit hint, and the 0.9.1 armor.ac sign hotfix).
+# hint, cleared-thread exit hint, and the 0.9.1 armor.ac sign hotfix), plus
+# oracle 0.9.2's no_regen on swell-boss - without it the boss healed roughly
+# 28 HP during each flee-and-recover cycle, more than a whole engagement of
+# auto-attack output at the observed starter hit rate, so the fight was
+# net-negative and unwinnable at any HP total.
 dependencies:
   "@tapestry/core": "0.1.28"
-  "@tapestry/oracle": "0.9.1"
+  "@tapestry/oracle": "0.9.2"
 
 validation: strict
 
