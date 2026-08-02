@@ -1,0 +1,10 @@
+id: "tapestry-mud-threadwalker:hub-tapestry-portal"
+name: "the tear in the weave"
+type: item
+tags: [fixture, no_get, hub_portal]
+keywords: [tear, weave, tapestry, portal]
+properties:
+  weight: 0
+  value: 0
+  portal_kind: "hub"
+  description: "Where the Tapestry hangs thinnest there is a place the threads do not quite meet, and the gap is person-shaped. It is the same shape your hand remembers. ENTER TEAR to step through."

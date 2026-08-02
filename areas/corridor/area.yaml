@@ -1,0 +1,6 @@
+area:
+  id: corridor
+  name: "The Threads of the Pattern"
+  level_range: [1, 1]
+  reset_interval: 0
+  flags: [safe]

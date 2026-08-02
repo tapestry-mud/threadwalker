@@ -1,0 +1,18 @@
+# template_id is a bake-time value: bakeTemplate derives oracle-week-<seedhex>, so the
+# school's real id is not knowable until it is baked. Task 15 bakes the school and writes
+# the real id in here. Until then the sentinel fails closed - a portal pointed at
+# REPLACE_AT_BAKE refuses with "That thread is not woven yet." rather than misbehaving.
+id: "tapestry-mud-threadwalker:school-portal"
+name: "the first door"
+type: item
+tags: [fixture, no_get, thread_portal]
+keywords: [door, first, school, portal]
+properties:
+  weight: 0
+  value: 0
+  portal_kind: "thread"
+  template_id: "REPLACE_AT_BAKE"
+  band_min: 1
+  band_max: 1
+  unraveling_boost: 3
+  description: "An old door, if a door is a place the weave gives. Beyond it the pattern is small and slow and deliberate, the way a thing is when it was made to be learned from. Fall in there and it costs you the walk and nothing you carry - you keep every scrap of what you took in and everything you took off the floor. ENTER DOOR to walk it."

@@ -1,0 +1,16 @@
+# The Tapestry is the corridor's index, not its progression readout. Reading a
+# player's own threads_earned into `text` would require a scripted item hook, which
+# the engine does not expose for items (registerScript only covers mobs and quests -
+# see PackLoader). Left static. The corridor's floor space is the real progression
+# readout (spec 3.1: further in is further earned) and the guide in the hall answers
+# "how far am I" dynamically.
+id: "tapestry-mud-threadwalker:the-tapestry"
+name: "the Tapestry"
+type: item
+tags: [readable, fixture, no_get]
+keywords: [tapestry, weave, pattern, threads]
+properties:
+  weight: 0
+  value: 0
+  description: "It hangs the whole height of the hall and keeps going, threads shifting and re-tying themselves without a sound. The ones nearest you are finished work. Further along they get looser, and then they are only intention."
+  text: "Woven, in order:\r\n  The First Thread - the oldest, and the shortest.\r\n\r\nEach thread has a door, and the doors run in the order they were made.\r\nWalk to a door and ENTER it.\r\nWhat you clear, you carry out. What you carry back in, opens it again."

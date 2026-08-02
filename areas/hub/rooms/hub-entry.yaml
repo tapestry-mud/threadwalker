@@ -1,12 +1,11 @@
 id: "tapestry-mud-threadwalker:hub-entry"
 area: hub
 name: "The Waystone Hall"
-description: "A quiet stone hall where threadwalkers gather between threads. Worn flagstones cover the floor, and cool air drifts in from unseen halls. An archway to the north opens onto the Tapestry. A smaller doorway east leads to a trophy nook. A worn path south sinks into the first thread."
+description: "A quiet stone hall where threadwalkers gather between threads. Worn flagstones cover the floor, and cool air drifts in from unseen halls. An archway to the north opens onto the Tapestry. A smaller doorway east leads to a trophy nook."
 tags: [safe, recall_point, entry_point]
 exits:
   north: "tapestry-mud-threadwalker:hub-tapestry-hall"
   east: "tapestry-mud-threadwalker:hub-trophy-nook"
-  south: "tapestry-mud-threadwalker:school-entry"
 properties:
   terrain: indoors
 spawns:

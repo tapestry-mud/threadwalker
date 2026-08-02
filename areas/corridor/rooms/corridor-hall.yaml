@@ -1,0 +1,23 @@
+# APPEND-ONLY. Weeks sit in release order along the corridor's length (spec 3.1, 3.2).
+# Every future week adds ONE room at the FAR end (a new `down` exit from the previous
+# week's room) plus ONE portal fixture in that new room. Never insert a new week nearer
+# the near end than the current last room - that renumbers every room behind it and
+# breaks room ids that are already live. Appending at the far end and moving the
+# arrival point instead keeps every room id stable forever, lets a retired week brick
+# its door while the room keeps its identity, and costs exactly one room plus one
+# portal per week.
+id: "tapestry-mud-threadwalker:corridor-hall"
+area: corridor
+name: "The Near End of the Weave"
+description: "A hall with no walls to speak of, only the weave itself drawn taut on both sides and running away from you into the dark. Threads of every color lie in order along its length, oldest nearest, and each one has a door. The first door stands just ahead, deeper in."
+tags: [safe, recall_point]
+exits:
+  down: "tapestry-mud-threadwalker:corridor-school"
+properties:
+  terrain: indoors
+fixtures:
+  - "tapestry-mud-threadwalker:the-tapestry"
+spawns:
+  - mob: "tapestry-mud-threadwalker:corridor-guide"
+    count: 1
+    tags: [persistent]

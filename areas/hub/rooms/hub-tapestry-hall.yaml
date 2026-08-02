@@ -12,4 +12,4 @@ spawns:
     count: 1
     tags: [persistent]
 fixtures:
-  - "tapestry-mud-threadwalker:tapestry-board"
+  - "tapestry-mud-threadwalker:hub-tapestry-portal"

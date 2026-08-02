@@ -1,0 +1,11 @@
+id: "tapestry-mud-threadwalker:corridor-school"
+area: corridor
+name: "The First Door"
+description: "The weave thins here into something a person could step through, if a person were fool enough. It is the oldest thread on the wall and the shortest, and somebody has worn the floor smooth in front of it. The hall runs back up toward the near end, and on, deeper, into threads you have not earned."
+tags: [safe]
+exits:
+  up: "tapestry-mud-threadwalker:corridor-hall"
+properties:
+  terrain: indoors
+fixtures:
+  - "tapestry-mud-threadwalker:school-portal"

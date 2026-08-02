@@ -1,3 +1,8 @@
 # Tag declarations for this pack.
-# Empty shell -- no custom tags yet. Content tasks add entries here as they land.
-tags: {}
+tags:
+  thread_portal:
+    description: "A fixture that walks the player into a thread run; its properties carry the wiring (template_id, band_min, band_max, unraveling_boost)"
+    applies_to: [item]
+  hub_portal:
+    description: "A fixture that walks the player from the hub into the corridor, landing at their frontier"
+    applies_to: [item]
