@@ -1,0 +1,22 @@
+id: "tapestry-mud-threadwalker:corridor-guide"
+name: "the corridor guide"
+type: npc
+tags: [no_kill]
+base_disposition: neutral
+behavior: stationary
+keywords: [guide, corridor]
+script: mobs/corridor-guide.js
+stats:
+  strength: 8
+  dexterity: 8
+  constitution: 10
+  intelligence: 12
+  wisdom: 16
+  luck: 10
+  max_hp: 60
+  max_resource: 0
+  max_movement: 20
+properties:
+  mob_level: 1
+  xp_value: 0
+  description: "Someone who stands at the near end of the hall and answers questions. Nothing about them suggests they carry anything worth taking."

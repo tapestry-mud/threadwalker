@@ -1,0 +1,17 @@
+# Spec 9.1: school is a real fight now, so a player cannot walk in empty-handed.
+# Granted once, in the Weaver opener's onComplete (scripts/hooks/weaver-opener.js).
+# damage_dice pinned against @tapestry/oracle's master-balance.yml weapon table at
+# level 1 (weapon.damage[1] = 60% "2d6", 40% "1d12") - "2d6" is the primary
+# (higher-weighted) roll for a level 1 weapon, matching spec 10.1.
+id: "tapestry-mud-threadwalker:starter-blade"
+name: "a plain shortsword"
+type: item
+tags: [equippable]
+keywords: [sword, shortsword, blade, plain]
+properties:
+  weight: 3
+  value: 10
+  rarity: common
+  slot: wield
+  damage_dice: "2d6"
+  description: "Not a good sword. A sword. Your hand closed on it somewhere in the tear and did not let go."

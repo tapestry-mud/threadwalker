@@ -26,6 +26,7 @@ import { syncFrontier } from "../frontier.js";
 
 var HUB_ENTRY_ROOM_ID = "tapestry-mud-threadwalker:hub-entry";
 var OPENER_SEEN_PROPERTY = "weaver_opener_seen";
+var STARTER_BLADE = "tapestry-mud-threadwalker:starter-blade";
 
 // The recall point is the player's corridor frontier (spec 3.3), not the hub.
 // `recall_room_id` is registered by @tapestry/core (properties.yml) and honoured
@@ -76,6 +77,13 @@ function playWeaverOpener(entityId) {
         // leaving a fresh character stranded with no path into the game (see the CRITICAL
         // gap Task 14 found: LocationRoomId is never otherwise set for a new character).
         tapestry.world.setProperty(entityId, OPENER_SEEN_PROPERTY, true);
+        // Spec 9.1: school is a real fight now, so nobody walks in empty-handed.
+        // Granted here because this callback already fires exactly once, on first
+        // connect, and it lands in the fiction: you come to holding something.
+        var blade = tapestry.items.spawnToInventory(STARTER_BLADE, entityId);
+        if (blade) {
+            tapestry.world.send(entityId, "Your hand is closed around a plain shortsword. You do not remember picking it up.\r\n");
+        }
         tapestry.world.teleportEntity(entityId, HUB_ENTRY_ROOM_ID);
         tapestry.world.sendRoomDescription(entityId);
     });
