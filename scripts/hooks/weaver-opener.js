@@ -1,4 +1,5 @@
 import * as tapestry from "@tapestry/engine";
+import { syncFrontier } from "../frontier.js";
 
 // The Weaver first-login opener (spec "The Story", the inciting incident;
 // output-cadence-cutscenes spec, slice 2). Plays once, before a brand-new
@@ -25,18 +26,22 @@ import * as tapestry from "@tapestry/engine";
 
 var HUB_ENTRY_ROOM_ID = "tapestry-mud-threadwalker:hub-entry";
 var OPENER_SEEN_PROPERTY = "weaver_opener_seen";
-var RECALL_ROOM_PROPERTY = "recall_room_id";
 
-// The hub is this world's recall point. `recall_room_id` is registered by
-// @tapestry/core (properties.yml) and honoured by both core's recall verb and
-// its death handler; when it is unset both fall back to tapestry-core:recall,
-// which in this world is a two-room pocket with no exit back to the hub. Set it
-// on every connect (not just in the opener's onComplete) so a character that
-// reaches the world by any other path - an admin seed, a future login route -
-// still has a working way home. Idempotent: same value written every time.
+// The recall point is the player's corridor frontier (spec 3.3), not the hub.
+// `recall_room_id` is registered by @tapestry/core (properties.yml) and honoured
+// by both core's recall verb and its death handler; when it is unset both fall
+// back to tapestry-core:recall, which in this world is a two-room pocket with no
+// exit back to the hub. frontier.js's syncFrontier resolves it to the first
+// thread door this player has not yet earned (school, for a brand-new
+// character), so recall always lands them at the near edge of their own
+// progress instead of the hub they are about to leave via the opener's own
+// teleport below. Set it on every connect (not just in the opener's
+// onComplete) so a character that reaches the world by any other path - an
+// admin seed, a future login route - still has a working way home. Idempotent:
+// syncFrontier is safe to call often.
 function ensureRecallRoom(entityId) {
     if (!entityId) { return; }
-    tapestry.world.setProperty(entityId, RECALL_ROOM_PROPERTY, HUB_ENTRY_ROOM_ID);
+    syncFrontier(entityId);
 }
 
 var WEAVER_OPENER_BEATS = [
