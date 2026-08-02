@@ -5,6 +5,16 @@ server:
   max_connections: 200
   tick_rate_ms: 100
 
+game:
+  # Where a brand-new character wakes up, and the fallback when a saved room is
+  # gone. Unset, the engine spawns into tapestry-core:recall -- The Nexus, whose
+  # description is addressed to engine builders ("use the `link` command to
+  # connect your rooms to a content pack") -- so every fresh player read that
+  # before the Weaver opener could move them, and any connect where the opener
+  # hook did not run left them stranded there with no exit into the game.
+  # Requires engine >=0.1.57, which added this key.
+  spawn_room: "tapestry-mud-threadwalker:hub-entry"
+
 admin:
   handle: Weaver
   email: travis@example.com

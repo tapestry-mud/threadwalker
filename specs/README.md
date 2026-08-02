@@ -12,7 +12,7 @@ plan; each capability gets a spec here as it ships.
 
 | Capability | File | Last Updated |
 |------------|------|--------------|
-| Threadwalker World | [threadwalker-world.md](threadwalker-world.md) | 2026-07-28 |
+| Threadwalker World | [threadwalker-world.md](threadwalker-world.md) | 2026-08-02 |
 
 <!-- spec-lint:start -->
 Mode: lenient

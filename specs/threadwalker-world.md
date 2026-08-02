@@ -1,6 +1,6 @@
 ---
 capability: threadwalker-world
-last-updated: 2026-07-28
+last-updated: 2026-08-02
 ---
 
 # Threadwalker World
@@ -21,12 +21,16 @@ YAML; the behavior below is what the scripts do.
 - On `character.created` (first-ever connect) and `player.login`, the opener sets the player's
   `recall_room_id` to the hub entry and, if unseen, plays the Weaver cutscene.
   (scripts/hooks/weaver-opener.js:106; scripts/hooks/weaver-opener.js:37)
+- A fresh character is placed in the hub by the engine, not by this pack: `server.yaml` sets
+  `game.spawn_room` to `tapestry-mud-threadwalker:hub-entry` (engine >= 0.1.57). The core
+  Nexus, whose description addresses engine builders, is never rendered to a player, and
+  placement does not depend on any pack script running. (server.yaml:9-18)
 - `tapestry.cutscene.play` runs the paced beat sequence; its `onComplete` marks
-  `weaver_opener_seen` and teleports the player to `hub-entry`. This teleport is the ONLY thing
-  that moves a fresh character out of the engine's hardcoded `tapestry-core:recall` spawn
-  fallback; `weaver_opener_seen` is set only in `onComplete`, so a mid-opener disconnect replays
-  cleanly instead of stranding the player. (scripts/hooks/weaver-opener.js:66;
-  scripts/hooks/weaver-opener.js:74)
+  `weaver_opener_seen` and teleports the player to `hub-entry`. With `spawn_room` set the
+  player is already there, so this teleport is now a no-op safety net rather than the only
+  thing moving them out of the engine's fallback room; `weaver_opener_seen` is set only in
+  `onComplete`, so a mid-opener disconnect replays cleanly.
+  (scripts/hooks/weaver-opener.js:66; scripts/hooks/weaver-opener.js:74)
 - Setting `recall_room_id` on every connect (not just in `onComplete`) means `recall` and the
   core death handler both return the player to the hub even if the opener never completes.
   (scripts/hooks/weaver-opener.js:39)
@@ -68,5 +72,6 @@ YAML; the behavior below is what the scripts do.
 
 ## Change Log
 
+- 2026-08-02 [spawn-in-the-hub](changes/2026-08-02-spawn-in-the-hub.md) - `game.spawn_room` places a fresh character in the Waystone Hall directly, so the core Nexus and its engine-builder copy are never player-visible and the opener's teleport stops being the only route into the game
 - 2026-07-27 [swell-name-substitution](changes/2026-07-27-swell-name-substitution.md) - the week-one ward hook substitutes the boss's live name into its swell tell-lines and narration instead of a hardcoded "the guardian" placeholder
 - 2026-07-25 [hub-threads-v1](changes/2026-07-25-hub-threads-v1.md) - the v1 world: hub, the school (designed loss + unlock), week one (The Fraying Vault) + the ward gate, and the Weaver first-login opener with hub recall wiring
