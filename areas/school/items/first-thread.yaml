@@ -1,9 +1,0 @@
-id: "tapestry-mud-threadwalker:first-thread"
-name: "a length of woven thread"
-type: item
-keywords: [thread, woven, first]
-properties:
-  weight: 0
-  rarity: common
-  value: 5
-  description: "A short length of thread, still faintly warm. It should not exist outside the weave. It does now, because you carried it out."

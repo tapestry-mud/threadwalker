@@ -1,9 +1,0 @@
-id: "tapestry-mud-threadwalker:school-aftermath"
-area: school
-name: "After the Weave"
-description: "You are somewhere quiet. The threads here lie still, undisturbed, as if the room is holding its breath along with you. North leads back to the Waystone Hall."
-tags: [safe]
-exits:
-  north: "tapestry-mud-threadwalker:hub-entry"
-properties:
-  terrain: indoors

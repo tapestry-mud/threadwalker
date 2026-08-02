@@ -1,5 +1,0 @@
-area:
-  id: school
-  name: "The First Thread"
-  level_range: [1, 1]
-  reset_interval: 0
