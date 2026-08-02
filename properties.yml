@@ -23,14 +23,6 @@ properties:
     description: "Which kind of portal this fixture is: hub (walks the player from the corridor back to the hub) or thread (walks the player into a thread run)"
     type: string
     applies_to: [item]
-  template_id:
-    description: >-
-      The thread template this portal mints from. A bake-time value written by
-      bakeTemplate (oracle-week-<seedhex>); the sentinel REPLACE_AT_BAKE means the
-      thread has not been baked yet, and the portal fails closed with "That thread
-      is not woven yet." rather than misbehaving.
-    type: string
-    applies_to: [item]
   band_min:
     description: "The minimum level this portal's normal run mints at, regardless of who walks in"
     type: int
