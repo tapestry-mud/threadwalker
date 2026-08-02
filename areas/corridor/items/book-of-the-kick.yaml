@@ -1,0 +1,15 @@
+id: "tapestry-mud-threadwalker:book-of-the-kick"
+name: "a thin bound manual"
+type: item
+tags: [readable, consumable]
+keywords: [book, manual, bound, kick]
+properties:
+  weight: 1
+  value: 20
+  rarity: common
+  consume_method: "read"
+  charges: 1
+  grants_ability: "kick"
+  grants_proficiency: 25
+  description: "Somebody wrote this for somebody who had never been in a fight. The diagrams are patient about it."
+  text: "The whole book is one movement, drawn eleven times from eleven angles.\r\nPlant, turn, drive through. Do not aim at the man. Aim past him.\r\n\r\n(type KICK <target> during a fight)"
